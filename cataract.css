@@ -30,7 +30,7 @@ body {
 }
 
 /* NAVIGATION */
-.main-nav { display: flex; gap: 12px; }
+.main-nav { display: flex; gap: 10px; }
 
 .main-nav a {
     color: white;
@@ -123,4 +123,9 @@ body {
     .mobile-nav-container { display: flex; gap: 10px; }
 
     .image-row img { width: 100%; }
+}
+
+.cataract-card1{
+    width: 400px;
+    height:300px;
 }
