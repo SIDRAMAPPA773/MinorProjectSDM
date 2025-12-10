@@ -129,3 +129,22 @@ body {
     width: 400px;
     height:300px;
 }
+
+
+
+.audio-btn {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    
+    color: white;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: 0.2s;
+}
+
+.audio-btn:hover {
+    background: #125aa0;
+}
