@@ -17,6 +17,7 @@ body {
     font-family: "Segoe UI", Arial, sans-serif;
     background: #f0f6ff;
     color: #222;
+    font-family: "Segoe UI", Arial, sans-serif;
 }
 
 /* ---------- HEADER ---------- */
@@ -96,7 +97,7 @@ main.content {
     text-align: center;
     font-size: 26px;
     font-weight: 700;
-    color:#e00000;;
+    color: #e00000;
     margin-bottom: 8px;
 }
 
@@ -107,31 +108,43 @@ main.content {
     margin-bottom: 20px;
 }
 
-/* ---------- TILES GRID ---------- */
-
-.tiles {
+/* ---------- TILES ---------- */
+/* .tiles {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 50px;
+} */
+ .tiles {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 32px;
     padding: 20px 0;
 }
 
-/* ---------- INDIVIDUAL TILE ---------- */
+
+
 
 .tile {
-    background: #f8fbff;
-    border-radius: 10px;
+    background: white;
+    border-radius: 12px;
     padding: 18px;
-    border-left: 5px solid #004aad;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
     box-shadow: 0 3px 10px rgba(0,0,0,0.12);
-    transition: 0.6s ease;
+    transition: box-shadow 0.3s ease;
 }
 
 .tile:hover {
-    box-shadow: 0 25px 50px rgba(0, 74, 173, 0.20);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.20);
+}
+
+
+.tile {
+    background: #f8fbff;
+    border-left: 5px solid #004aad;
+    border-radius: 8px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
 }
 
 .tile h3 {
@@ -178,7 +191,6 @@ main.content {
         padding: 6px 8px;
     }
 }
-
 @media (max-width: 500px) {
     .site-header {
         flex-direction: column;
@@ -190,7 +202,6 @@ main.content {
         justify-content: flex-end;
     }
 }
-
 @media(max-width: 520px) {
   .tiles {
     gap: 20px;
@@ -248,6 +259,7 @@ main.content {
     border-bottom: none;
 }
 
+/* ------------ RESPONSIVE ------------ */
 @media (max-width: 800px) {
     .desktop-nav {
         display: none;
@@ -258,12 +270,12 @@ main.content {
     }
 }
 
-/* ------------ AUDIO BUTTONS ------------ */
 
 .audio-btn {
     width: 42px;
     height: 42px;
     border-radius: 50%;
+    
     color: white;
     border: none;
     font-size: 20px;
@@ -294,6 +306,22 @@ main.content {
     background: #125aa0;
 }
 
-h2 {
+.what-cataract1 {
+  width: 300px;
+  padding: 20px;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+  transition: box-shadow 0.3s ease;
+  margin-right: 20px;
+}
+
+.what-cataract1:hover {
+  box-shadow: 0 50px 50px rgba(0,0,0,0.20);
+}
+
+
+
+h2{
      color: #004aad;
 }
