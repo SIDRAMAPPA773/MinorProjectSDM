@@ -5,52 +5,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>What is Cataract – SDM Cataract Information Portal</title>
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="cataract.css" />
 </head>
 
 <body>
 
     <!-- ===== HEADER ===== -->
-    <header class="site-header">
-        <div class="header-left">
-            <img src="sdmlogo.png" class="site-logo" alt="SDM Logo" />
-
-            <div class="site-title">
-                <h2>SDM College of Medical Sciences & Hospital</h2>
-                <h3>Ophthalmology — Cataract Information Portal</h3>
-            </div>
-        </div>
-
-        <nav class="main-nav desktop-nav">
-            <a href="index.html">Home</a>
-            <a class="active" href="cataract.html">What is Cataract?</a>
-            <a href="pre-surgery.html">Before Surgery</a>
-            <a href="post-surgery.html">After Surgery</a>
-            <a href="faq.html">FAQs</a>
-            <a href="contact.html">Contact / Help</a>
-        </nav>
-
-        <!-- MOBILE NAV -->
-        <div class="mobile-nav-container">
-            <a class="mobile-home" href="index.html">Home</a>
-            <button id="hamburgerBtn" class="hamburger">☰</button>
-
-            <div id="mobileMenu" class="mobile-menu">
-                <a href="cataract.html">What is Cataract?</a>
-                <a href="pre-surgery.html">Before Surgery</a>
-                <a href="post-surgery.html">After Surgery</a>
-                <a href="faq.html">FAQs</a>
-                <a href="contact.html">Contact / Help</a>
-            </div>
-        </div>
-
-        <div class="header-right">
-            <select id="language">
-                <option value="en">English</option>
-                <option value="kn">ಕನ್ನಡ</option>
-            </select>
-        </div>
-    </header>
+    <header class="site-header"></header>
 
     <!-- ===== PAGE CONTENT ===== -->
     <main class="container">
@@ -60,189 +22,168 @@
 
         <section class="content-section">
             <p id="cat_p1">
-                A cataract is a condition where the natural lens inside the eye becomes cloudy, preventing
-                light from entering the eye clearly. The lens normally works like a transparent glass
-                that focuses light onto the retina to create sharp, clear vision. When a cataract forms,
-                this lens gradually loses its transparency and becomes foggy or opaque. As a result,
-                vision slowly becomes blurry, hazy, dim, or distorted.
+                A cataract is a clouding of the eye’s natural lens, which lies behind the iris and the pupil.
+                It is the most common cause of vision loss in people over age 40 and is the principal cause of blindness
+                in the world.
             </p>
             <button class="audio-btn" onclick="playAudio('cat_p1')">&#128266; </button>
 
+            <img id="cat_img1" src="cataract.png" alt="Cataract Eye Diagram" class="content-img"
+                style="margin: 20px 0; border-radius: 8px; width: 100%; max-width: 500px; display: block; margin-left: auto; margin-right: auto;">
+
             <p id="cat_p2">
-                Cataracts usually develop slowly over many years and are most commonly related to aging.
-                However, they can also occur earlier in life due to medical conditions like diabetes,
-                long-term use of steroid medications, eye injuries, infections, or genetic factors.
-                Extended exposure to sunlight (UV rays), smoking, and poor nutrition may further speed
-                up cataract formation.
+                <strong>How it affects vision:</strong> Imagine looking through a frosty or fogged-up window.
+                Clouded vision caused by cataracts can make it more difficult to read, drive a car (especially at
+                night),
+                or see the expression on a friend's face.
             </p>
             <button class="audio-btn" onclick="playAudio('cat_p2')">&#128266; </button>
+        </section>
 
-            <p id="cat_p3">
-                In the early stages, cataracts may not cause noticeable symptoms. Over time, the clouding
-                becomes dense enough to interfere with everyday activities such as reading, driving,
-                recognizing faces, or seeing clearly in bright sunlight. Colors may start to appear dull,
-                lights may seem too bright, and night vision becomes difficult due to glare and halos.
-            </p>
-            <button class="audio-btn" onclick="playAudio('cat_p3')">&#128266; </button>
-
-            <p id="cat_p4">
-                Cataracts are very common and one of the leading causes of preventable blindness worldwide.
-                Fortunately, modern cataract treatment is extremely safe and effective. Surgery involves
-                removing the cloudy lens and replacing it with a clear artificial lens, restoring sharp
-                vision and improving quality of life. Since cataracts do not improve on their own and
-                cannot be treated with medicines or glasses, surgery remains the only permanent solution.
-            </p>
-            
-            <button class="audio-btn" onclick="playAudio('cat_p4')">&#128266; </button>
-
-            <div class="image-box " style="padding:0px  30px;">
-                <img id="cat_img1" src="cataract.png" alt="Cataract Example Image" />
-            </div>
+        <!-- CAUSES -->
+        <h2 id="cat_causes_title" class="section-title">What Causes Cataract?</h2>
+        <section class="content-section">
+            <p id="cat_causes_intro">Most cataracts develop when aging or injury changes the tissue that makes up the
+                eye's lens.</p>
+            <ul class="bullet-list" id="cat_causes_list">
+                <li id="cause1"><strong>Aging:</strong> The most common cause.</li>
+                <li id="cause2"><strong>Medical Conditions:</strong> Diabetes, hypertension, or obesity.</li>
+                <li id="cause3"><strong>Medications:</strong> Long-term use of steroid medications.</li>
+                <li id="cause4"><strong>Lifestyle:</strong> Smoking and excessive alcohol consumption.</li>
+                <li id="cause5"><strong>Environment:</strong> Prolonged exposure to ultraviolet (UV) sunlight.</li>
+            </ul>
+            <button class="audio-btn" onclick="playAudio('cat_causes_list')">&#128266; </button>
         </section>
 
         <!-- SYMPTOMS -->
-        <h2 id="cat_symptoms_title" class="section-title">Common Symptoms of Cataract</h2>
-
+        <h2 id="cat_symptoms_title" class="section-title">Symptoms to Watch For</h2>
         <section class="content-section">
             <ul class="bullet-list" id="cat_symptoms_list">
-                <li id="sym1">Blurry or cloudy vision</li>
-                <li id="sym2">Difficulty seeing at night</li>
-                <li id="sym3">Sensitivity to light and glare</li>
-                <li id="sym4">Seeing halos around lights</li>
-                <li id="sym5">Faded or yellowish colors</li>
-                <li id="sym6">Frequent change in glasses power</li>
+                <li id="sym1">Clouded, blurred, or dim vision.</li>
+                <li id="sym2">Increasing difficulty with vision at night.</li>
+                <li id="sym3">Sensitivity to light and glare.</li>
+                <li id="sym4">Need for brighter light for reading and other activities.</li>
+                <li id="sym5">Seeing "halos" around lights.</li>
+                <li id="sym6">Frequent changes in eyeglass or contact lens prescription.</li>
+                <li id="sym7">Fading or yellowing of colors.</li>
             </ul>
             <button class="audio-btn" onclick="playAudio('cat_symptoms_list')">&#128266; </button>
         </section>
 
-        <!-- TYPES -->
-        <h2 id="cat_types_title" class="section-title">Types of Cataract</h2>
-
+        <!-- TREATMENT -->
+        <h2 id="cat_treatment_title" class="section-title">Treatment: Phacoemulsification</h2>
         <section class="content-section">
-            <ul class="bullet-list" id="cat_types_list">
-                <li id="type1"><b>Nuclear Cataract:</b> Affects the center of the lens</li>
-                <li id="type2"><b>Cortical Cataract:</b> Affects the edges of the lens</li>
-                <li id="type3"><b>Posterior Subcapsular Cataract:</b> Affects the back of the lens; fast-growing</li>
-                <li id="type4"><b>Congenital Cataract:</b> Present at birth</li>
-            </ul>
-            <button class="audio-btn" onclick="playAudio('cat_types_list')">&#128266; </button>
+            <p id="cat_treatment_p1">
+                The only effective treatment for cataracts is surgery. Modern cataract surgery (Phacoemulsification)
+                is one of the safest and most effective surgical procedures performed today.
+            </p>
+            <button class="audio-btn" onclick="playAudio('cat_treatment_p1')">&#128266; </button>
 
-            <div class="image-box" style="padding:0px  30px;">
-                <img id="cat_img2" src="humaneye2.png" alt="Lens and Cataract Diagram" />
+            <div class="image-box" style="padding: 15px 0;">
+                <img id="cat_img2" src="eyesurgery.png" alt="Surgery Illustration"
+                    style="max-width: 100%; border-radius: 8px;">
+            </div>
+
+            <p id="cat_treatment_step_title"><strong>How it works:</strong></p>
+            <ul class="bullet-list" id="cat_treatment_list">
+                <li id="step1">A tiny incision is made in the eye.</li>
+                <li id="step2">Ultrasound waves break up the cloudy lens (Phacoemulsification).</li>
+                <li id="step3">The fragments are suctioned out.</li>
+                <li id="step4">A new artificial Intraocular Lens (IOL) is inserted.</li>
+            </ul>
+            <button class="audio-btn" onclick="playAudio('cat_treatment_list')">&#128266; </button>
+        </section>
+
+
+
+        <!-- IOL TYPES (Modern Cards) -->
+        <h2 id="cat_iol_title" class="section-title">Types of Intraocular Lenses (IOLs)</h2>
+        <section class="content-section">
+            <div id="cat_iol_container">
+                <p id="cat_iol_intro" style="margin-bottom: 20px;">We offer a range of FDA-approved lenses to suit your
+                    lifestyle:</p>
+                <div class="features-grid"
+                    style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+                    <!-- Card 1 -->
+                    <div class="feature-card" style="text-align: center; padding: 1.5rem; border: 1px solid #e5e7eb;">
+                        <img src="iol_monofocal.png" alt="Monofocal Lens"
+                            style="width: 100px; height: 100px; object-fit: contain; margin-bottom: 1rem;">
+                        <h3 id="iol_title_1" class="card-title" style="font-size: 1.1rem; margin: 10px 0;">Monofocal
+                            Lenses</h3>
+                        <p id="iol_desc_1" class="card-desc" style="font-size: 0.9rem; text-align: left;">Clear vision
+                            at one distance (usually far). Glasses required for reading.</p>
+                    </div>
+                    <!-- Card 2 -->
+                    <div class="feature-card" style="text-align: center; padding: 1.5rem; border: 1px solid #e5e7eb;">
+                        <img src="iol_toric.png" alt="Toric Lens"
+                            style="width: 100px; height: 100px; object-fit: contain; margin-bottom: 1rem;">
+                        <h3 id="iol_title_2" class="card-title" style="font-size: 1.1rem; margin: 10px 0;">Toric Lenses
+                        </h3>
+                        <p id="iol_desc_2" class="card-desc" style="font-size: 0.9rem; text-align: left;">Designed to
+                            correct astigmatism (cylindrical power) along with cataracts.</p>
+                    </div>
+                    <!-- Card 3 -->
+                    <div class="feature-card" style="text-align: center; padding: 1.5rem; border: 1px solid #e5e7eb;">
+                        <img src="iol_multifocal.png" alt="Multifocal Lens"
+                            style="width: 100px; height: 100px; object-fit: contain; margin-bottom: 1rem;">
+                        <h3 id="iol_title_3" class="card-title" style="font-size: 1.1rem; margin: 10px 0;">Multifocal
+                            Lenses</h3>
+                        <p id="iol_desc_3" class="card-desc" style="font-size: 0.9rem; text-align: left;">Premium lenses
+                            for clear vision at all distances. Reduces need for glasses.</p>
+                    </div>
+                </div>
+            </div>
+            </div>
+            <div style="text-align: center; margin-top: 15px;">
+                <button class="audio-btn" onclick="playAudio('cat_iol_container')">&#128266; </button>
             </div>
         </section>
 
-        <!-- WHEN TO GET SURGERY -->
-        <h2 id="cat_when_title" class="section-title">When Should You Go for Cataract Surgery?</h2>
-
+        <!-- MYTHS vs FACTS (New Section) -->
+        <h2 id="cat_myth_title" class="section-title">Myths vs Facts</h2>
         <section class="content-section">
-            <p id="when_p1">
-                Cataract surgery becomes necessary when your vision starts affecting your daily life.
-            </p>
-            <button class="audio-btn" onclick="playAudio('when_p1')">&#128266; </button>
-
-            <ul class="bullet-list" id="when_list">
-                <li id="when1">Difficulty driving (especially at night)</li>
-                <li id="when2">Unable to read clearly</li>
-                <li id="when3">Colors appear faded</li>
-                <li id="when4">Your doctor notices rapid cataract growth</li>
-                <li id="when5">High eye pressure due to cataract</li>
+            <ul class="bullet-list" id="cat_myth_list">
+                <li id="myth1"><strong>Myth:</strong> Cataracts grow back. <br><strong>Fact:</strong> Usually, they
+                    don't. A "secondary cataract" can happen but is easily treated with laser.</li>
+                <li id="myth2"><strong>Myth:</strong> Medication can cure cataracts. <br><strong>Fact:</strong> Surgery
+                    is the only cure.</li>
             </ul>
-            <button class="audio-btn" onclick="playAudio('when_list')">&#128266; </button>
-
-            <p id="when_note" class="note">
-                Modern cataract surgery is extremely safe, quick (10–20 minutes), and painless.
-            </p>
-            <button class="audio-btn" onclick="playAudio('when_note')">&#128266; </button>
-        </section>
-
-        <!-- HISTORY -->
-        <h2 id="cat_history_title" class="section-title">History of Cataract Surgery</h2>
-
-        <section class="content-section">
-            <p id="hist_p1">Cataract surgery has evolved dramatically through history:</p>
-            <button class="audio-btn" onclick="playAudio('hist_p1')">&#128266; </button>
-
-            <ul class="bullet-list" id="hist_list">
-                <li id="hist1"><b>600 BC – Sushruta:</b> First documented cataract removal in ancient India.</li>
-                <li id="hist2"><b>1700s:</b> First surgical extraction of the lens.</li>
-                <li id="hist3"><b>1949:</b> First artificial lens (IOL) implanted.</li>
-                <li id="hist4"><b>1967:</b> Phacoemulsification invented (modern ultrasound technique).</li>
-                <li id="hist5"><b>Today:</b> One of the safest and most successful surgeries worldwide.</li>
-            </ul>
-            <button class="audio-btn" onclick="playAudio('hist_list')">&#128266; </button>
-
-            <div class="image-row"  style="padding:0px  30px;">
-                <img id="cat_img3" src="eyecare.png" alt="Eye Care Image" />
-                <img id="cat_img4" src="eyesurgery.png" alt="Eye Surgery Image" />
-            </div>
+            <button class="audio-btn" onclick="playAudio('cat_myth_list')">&#128266; </button>
         </section>
 
     </main>
 
     <!-- FOOTER -->
-    <footer class="site-footer">
-        <p>© 2025 SDM College of Medical Sciences & Hospital. Developed by SDMCET.</p>
-    </footer>
+    <footer class="site-footer"></footer>
 
-    <script src="menu.js"></script>
     <script src="language.js"></script>
 
-<script>
-    document.body.classList.add("fade-out");
+    <script>
+        document.body.classList.add("fade-out");
 
-    window.addEventListener("DOMContentLoaded", () => {
-        document.body.classList.remove("fade-out");
-    });
+        window.addEventListener("DOMContentLoaded", () => {
+            document.body.classList.remove("fade-out");
+        });
 
-    // Smooth fade when clicking internal links
-    document.querySelectorAll('a[href]').forEach(link => {
-        if (link.href.includes(window.location.origin)) {
-            link.addEventListener('click', function (e) {
-                const href = this.getAttribute("href");
+        // Smooth fade when clicking internal links
+        document.querySelectorAll('a[href]').forEach(link => {
+            if (link.href.includes(window.location.origin)) {
+                link.addEventListener('click', function (e) {
+                    const href = this.getAttribute("href");
 
-                if (!href.startsWith("#")) {
-                    e.preventDefault();
-                    document.body.classList.add("fade-out");
-                    setTimeout(() => {
-                        window.location = href;
-                    }, 300); // match transition time
-                }
-            });
-        }
-    });
-</script>
+                    if (!href.startsWith("#")) {
+                        e.preventDefault();
+                        document.body.classList.add("fade-out");
+                        setTimeout(() => {
+                            window.location = href;
+                        }, 300); // match transition time
+                    }
+                });
+            }
+        });
+    </script>
 
-<script>
-    document.body.classList.add( "fade-out" );
 
-    window.addEventListener( "DOMContentLoaded", () =>
-    {
-        document.body.classList.remove( "fade-out" );
-    } );
-
-    // Smooth fade when clicking internal links
-    document.querySelectorAll( 'a[href]' ).forEach( link =>
-    {
-        if ( link.href.includes( window.location.origin ) )
-        {
-            link.addEventListener( 'click', function ( e )
-            {
-                const href = this.getAttribute( "href" );
-
-                if ( !href.startsWith( "#" ) )
-                {
-                    e.preventDefault();
-                    document.body.classList.add( "fade-out" );
-                    setTimeout( () =>
-                    {
-                        window.location = href;
-                    }, 300 ); // match transition time
-                }
-            } );
-        }
-    } );
-</script>
 
 
 

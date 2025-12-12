@@ -11,46 +11,7 @@
 <body>
 
     <!-- ======= HEADER ======= -->
-    <header class="site-header">
-
-        <div class="header-left">
-            <img src="sdmlogo.png" alt="SDM Logo" class="site-logo">
-            <div class="site-title">
-                <h1>SDM College of Medical Sciences & Hospital</h1>
-                <h2>Ophthalmology — Cataract Information Portal</h2>
-            </div>
-        </div>
-
-        <nav class="main-nav desktop-nav">
-            <a href="index.html">Home</a>
-            <a href="cataract.html">What is Cataract?</a>
-            <a href="pre-surgery.html">Before Surgery</a>
-            <a class="active" href="post-surgery.html">After Surgery</a>
-            <a href="faq.html">FAQs</a>
-            <a href="contact.html">Contact / Help</a>
-        </nav>
-
-        <div class="mobile-nav-container">
-            <a class="mobile-home" href="index.html">Home</a>
-            <button id="hamburgerBtn" class="hamburger">☰</button>
-
-            <div id="mobileMenu" class="mobile-menu">
-                <a href="cataract.html">What is Cataract?</a>
-                <a href="pre-surgery.html">Before Surgery</a>
-                <a href="post-surgery.html">After Surgery</a>
-                <a href="faq.html">FAQs</a>
-                <a href="contact.html">Contact / Help</a>
-            </div>
-        </div>
-
-        <div class="header-right">
-            <select id="language">
-                <option value="en">English</option>
-                <option value="kn">ಕನ್ನಡ</option>
-            </select>
-        </div>
-
-    </header>
+    <header class="site-header"></header>
 
     <!-- ======= MAIN CONTENT ======= -->
     <main class="content container">
@@ -58,108 +19,132 @@
         <h2 id="post_title" class="page-title">After Cataract Surgery</h2>
 
         <section class="content-section">
-            <p id="post_p1">
-                Recovery after cataract surgery is usually smooth and comfortable. Following the care
-                instructions will help your eye heal faster and prevent complications.
+            <p id="post_intro">
+                Your vision will likely be blurry at first as your eye heals and adjusts.
+                This is normal. Most patients see clearly within a few days.
             </p>
-            <button class="audio-btn" onclick="playAudio('post_p1')">&#128266; </button>
+            <button class="audio-btn" onclick="playAudio('post_intro')">&#128266; </button>
         </section>
 
-        <!-- DO’S -->
-        <h2 id="post_do_title" class="section-title">Things You Should Do</h2>
-
+        <!-- RECOVERY TIMELINE -->
+        <h2 id="post_timeline_title" class="section-title">Recovery Timeline</h2>
         <section class="content-section">
-            <ul class="bullet-list" id="post_do_list">
-                <li id="do1">Use eye drops as prescribed</li>
-                <li id="do2">Wear the protective eye shield while sleeping</li>
-                <li id="do3">Keep the operated eye clean and dry</li>
-                <li id="do4">Attend all follow-up check-ups</li>
-                <li id="do5">Wear sunglasses in bright sunlight</li>
+            <ul class="bullet-list" id="post_timeline_list">
+                <li id="rec1"><strong>Day 1:</strong> Rest. Your eye may feel gritty or itchy. Wear your protective
+                    shield while sleeping.</li>
+                <li id="rec2"><strong>Week 1:</strong> Vision improves. Avoid getting water/soap in your eye. No heavy
+                    lifting.</li>
+                <li id="rec3"><strong>Month 1:</strong> Full healing. You can usually get a final eyeglass prescription
+                    if needed.</li>
             </ul>
-
-            <button class="audio-btn" onclick="playAudio('post_do_list')">&#128266; </button>
+            <button class="audio-btn" onclick="playAudio('post_timeline_list')">&#128266; </button>
         </section>
 
-        <!-- DON'TS -->
-        <h2 id="post_dont_title" class="section-title">Things You Should Avoid</h2>
 
+        <!-- FOLLOW UP (Modern Timeline) -->
+        <h2 id="post_followup_title" class="section-title">Follow-up Visit Schedule</h2>
         <section class="content-section">
-            <ul class="bullet-list" id="post_dont_list">
-                <li id="dont1">Do not rub or press the operated eye</li>
-                <li id="dont2">Avoid water entering the eye for 1 week</li>
-                <li id="dont3">Avoid lifting heavy weights</li>
-                <li id="dont4">Avoid bending your head too much</li>
-                <li id="dont5">Avoid smoking and alcohol</li>
-                <li id="dont6">Do not drive until your doctor permits</li>
+            <p id="post_followup_intro" style="margin-bottom: 20px;">Regular check-ups are vital to monitor healing:</p>
+            <div class="features-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
+                <!-- Step 1 -->
+                <div class="feature-card"
+                    style="text-align: center; padding: 1.5rem; background: #f0fdf4; border: 1px solid #bbf7d0;">
+                    <h3 id="fol_title_1" class="card-title" style="color: #15803d; margin-bottom: 5px;">Day 1</h3>
+                    <p id="fol_desc_1" class="card-desc" style="color: #14532d;">Mandatory check for pressure and signs
+                        of infection.</p>
+                </div>
+                <!-- Step 2 -->
+                <div class="feature-card"
+                    style="text-align: center; padding: 1.5rem; background: #eff6ff; border: 1px solid #bfdbfe;">
+                    <h3 id="fol_title_2" class="card-title" style="color: #1d4ed8; margin-bottom: 5px;">Day 7</h3>
+                    <p id="fol_desc_2" class="card-desc" style="color: #1e3a8a;">Visual acuity test and eye drop
+                        adjustment.</p>
+                </div>
+                <!-- Step 3 -->
+                <div class="feature-card"
+                    style="text-align: center; padding: 1.5rem; background: #fff7ed; border: 1px solid #fed7aa;">
+                    <h3 id="fol_title_3" class="card-title" style="color: #c2410c; margin-bottom: 5px;">Month 1</h3>
+                    <p id="fol_desc_3" class="card-desc" style="color: #7c2d12;">Final clearance and glasses
+                        prescription if needed.</p>
+                </div>
+            </div>
+            </div>
+            <div style="text-align: center; margin-top: 15px;">
+                <button class="audio-btn" onclick="playAudio('post_followup_container')">&#128266; </button>
+            </div>
+        </section>
+
+        <!-- DO'S AND DON'TS -->
+        <h2 id="post_guide_title" class="section-title">Activity Guide: Do's & Don'ts</h2>
+        <section class="content-section">
+            <div class="comparison-box">
+                <div class="do-box">
+                    <h3 id="post_do_head" style="color: green;">✅ Do This</h3>
+                    <ul class="bullet-list" id="post_do_list">
+                        <li id="do1">Use prescribed eye drops on time.</li>
+                        <li id="do2">Wear sunglasses outside.</li>
+                        <li id="do3">Watch TV (at a normal distance).</li>
+                        <li id="do4">Read books/mobile (if comfortable).</li>
+                    </ul>
+                </div>
+                <div class="dont-box">
+                    <h3 id="post_dont_head" style="color: red;">❌ Avoid This</h3>
+                    <ul class="bullet-list" id="post_dont_list">
+                        <li id="dont1">Do NOT rub your eye.</li>
+                        <li id="dont2">No swimming or splashing water on face.</li>
+                        <li id="dont3">No cooking (smoke/steam) for 1 week.</li>
+                        <li id="dont4">No driving until doctor approves.</li>
+                    </ul>
+                </div>
+            </div>
+            <button class="audio-btn" onclick="playAudio('post_guide_title')">&#128266; </button>
+        </section>
+
+        <!-- EMERGENCY -->
+        <h2 id="post_emergency_title" class="section-title">When to Call the Doctor</h2>
+        <section class="content-section" style="background-color: #ffe6e6; padding: 15px; border-radius: 8px;">
+            <p id="post_emergency_intro">Contact us immediately if you experience:</p>
+            <ul class="bullet-list" id="post_emergency_list">
+                <li id="em1">Severe pain not relieved by medicine.</li>
+                <li id="em2">Sudden loss of vision or a "curtain" effect.</li>
+                <li id="em3">Flashes of light or new floaters.</li>
+                <li id="em4">Excessive redness or discharge.</li>
             </ul>
-
-            <button class="audio-btn" onclick="playAudio('post_dont_list')">&#128266; </button>
-        </section>
-
-        <!-- WARNING SIGNS -->
-        <h2 id="post_warn_title" class="section-title">Warning Signs — Visit the Hospital If You Notice</h2>
-
-        <section class="content-section">
-            <ul class="bullet-list" id="post_warn_list">
-                <li id="warn1">Severe pain in the eye</li>
-                <li id="warn2">Sudden decrease in vision</li>
-                <li id="warn3">Excessive redness or swelling</li>
-                <li id="warn4">Continuous watering</li>
-                <li id="warn5">Flashes of light or floaters</li>
-            </ul>
-
-            <button class="audio-btn" onclick="playAudio('post_warn_list')">&#128266; </button>
-        </section>
-
-        <!-- MEDICINES -->
-        <h2 id="post_meds_title" class="section-title">Eye Drop Instructions</h2>
-
-        <section class="content-section">
-            <p id="post_meds_p1">Use only the prescribed eye drops and follow the instructed schedule carefully.</p>
-            <button class="audio-btn" onclick="playAudio('post_meds_p1')">&#128266; </button>
+            <button class="audio-btn" onclick="playAudio('post_emergency_list')">&#128266; </button>
         </section>
 
     </main>
 
     <!-- ======= FOOTER ======= -->
-    <footer class="site-footer">
-        <p>© 2025 SDM College of Medical Sciences & Hospital, Dharwad. Developed by SDMCET.</p>
-    </footer>
+    <footer class="site-footer"></footer>
 
     <!-- ======= SCRIPTS ======= -->
-    <script src="menu.js"></script>
     <script src="language.js"></script>
 
-<script>
-    document.body.classList.add( "fade-out" );
+    <script>
+        document.body.classList.add("fade-out");
 
-    window.addEventListener( "DOMContentLoaded", () =>
-    {
-        document.body.classList.remove( "fade-out" );
-    } );
+        window.addEventListener("DOMContentLoaded", () => {
+            document.body.classList.remove("fade-out");
+        });
 
-    // Smooth fade when clicking internal links
-    document.querySelectorAll( 'a[href]' ).forEach( link =>
-    {
-        if ( link.href.includes( window.location.origin ) )
-        {
-            link.addEventListener( 'click', function ( e )
-            {
-                const href = this.getAttribute( "href" );
+        // Smooth fade when clicking internal links
+        document.querySelectorAll('a[href]').forEach(link => {
+            if (link.href.includes(window.location.origin)) {
+                link.addEventListener('click', function (e) {
+                    const href = this.getAttribute("href");
 
-                if ( !href.startsWith( "#" ) )
-                {
-                    e.preventDefault();
-                    document.body.classList.add( "fade-out" );
-                    setTimeout( () =>
-                    {
-                        window.location = href;
-                    }, 300 ); // match transition time
-                }
-            } );
-        }
-    } );
-</script>
+                    if (!href.startsWith("#")) {
+                        e.preventDefault();
+                        document.body.classList.add("fade-out");
+                        setTimeout(() => {
+                            window.location = href;
+                        }, 300); // match transition time
+                    }
+                });
+            }
+        });
+    </script>
 
 
 

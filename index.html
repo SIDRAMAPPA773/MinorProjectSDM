@@ -10,156 +10,114 @@
 
 <body>
 
-     <!-- ======= HEADER ======= -->
-     <header class="site-header">
+    <!-- ======= HEADER ======= -->
+    <header class="site-header"></header>
 
-        <div class="header-left">
-            <img src="sdmlogo.png" alt="SDM Logo" class="site-logo">
+    <!-- ===== PAGE CONTENT ===== -->
+    <main>
 
-            <div class="site-title">
-                <h1>SDM College of Medical Sciences & Hospital</h1>
-                <h2>Ophthalmology — Cataract Information Portal</h2>
+        <!-- HERO SECTION -->
+        <section class="hero-section">
+            <div class="hero-content">
+                <h1 id="heroTitle" class="hero-title">Expert Cataract Care You Can Trust</h1>
+                <p id="heroSubtitle" class="hero-subtitle">Restoring clear vision with advanced technology and
+                    compassionate care at SDM Hospital.</p>
+                <a href="contact.html" id="heroBtn" class="btn-primary">Learn More</a>
             </div>
-        </div>
+        </section>
 
-        <!-- Desktop Nav -->
-        <nav class="main-nav desktop-nav" role="navigation">
-            <a id="nav0" href="index.html">Home</a>
-            <a id="nav1" href="cataract.html">What is Cataract?</a>
-            <a id="nav2" href="pre-surgery.html">Before Surgery</a>
-            <a id="nav3" href="post-surgery.html">After Surgery</a>
-            <a id="nav4" href="faq.html">FAQs</a>
-            <a id="nav5" href="contact.html">Contact / Help</a>
-        </nav>
+        <div class="container">
+            <span id="sectionFeatures" class="section-label">Our Services</span>
+            <h2 id="featuresHead" class="section-head">Comprehensive Eye Care</h2>
 
-        <!-- Mobile Nav -->
-        <div class="mobile-nav-container">
-            <a class="mobile-home" href="index.html">Home</a>
+            <!-- FEATURES GRID -->
+            <section class="features-grid">
+                <!-- TILE 1 -->
+                <a href="cataract.html" class="feature-card">
+                    <div class="card-icon">👁️</div>
+                    <h3 id="tile1" class="card-title">What is Cataract?</h3>
+                    <p id="tileDesc1" class="card-desc">Understanding the condition, causes, and treatment options.</p>
+                    <span class="btn-link">Read More &rarr;</span>
+                </a>
 
-            <button class="hamburger" id="hamburgerBtn">☰</button>
+                <!-- TILE 2 -->
+                <a href="pre-surgery.html" class="feature-card">
+                    <div class="card-icon">📋</div>
+                    <h3 id="tile2" class="card-title">Before Surgery</h3>
+                    <p id="tileDesc2" class="card-desc">Step-by-step guide to preparing for your procedure.</p>
+                    <span class="btn-link">Read More &rarr;</span>
+                </a>
 
-            <div class="mobile-menu" id="mobileMenu">
-                <a href="cataract.html">What is Cataract?</a>
-                <a href="pre-surgery.html">Before Surgery</a>
-                <a href="post-surgery.html">After Surgery</a>
-                <a href="faq.html">FAQs</a>
-                <a href="contact.html">Contact / Help</a>
-            </div>
-        </div>
+                <!-- TILE 3 -->
+                <a href="post-surgery.html" class="feature-card">
+                    <div class="card-icon">🩺</div>
+                    <h3 id="tile3" class="card-title">After Surgery</h3>
+                    <p id="tileDesc3" class="card-desc">Essential care tips for a smooth and fast recovery.</p>
+                    <span class="btn-link">Read More &rarr;</span>
+                </a>
 
-        <div class="header-right">
-            <select id="language">
-                <option value="en" selected>English</option>
-                <option value="kn">ಕನ್ನಡ (Kannada)</option>
-            </select>
-        </div>
+                <!-- TILE 4 -->
+                <a href="faq.html" class="feature-card">
+                    <div class="card-icon">❓</div>
+                    <h3 id="tile4" class="card-title">FAQs</h3>
+                    <p id="tileDesc4" class="card-desc">Answers to common concerns about surgery and care.</p>
+                    <span class="btn-link">Read More &rarr;</span>
+                </a>
 
-    </header>
+                <!-- TILE 5 -->
+                <a href="contact.html" class="feature-card">
+                    <div class="card-icon">📞</div>
+                    <h3 id="tile5" class="card-title">Contact / Help</h3>
+                    <p id="tileDesc5" class="card-desc">Reach out to our specialists for appointments and queries.</p>
+                    <span class="btn-link">Read More &rarr;</span>
+                </a>
+            </section>
 
-    <!-- ======= MAIN CONTENT ======= -->
-    <main class="content" id="home-main">
-        <h2 id="homeTitle" class="home-title">Welcome to the SDM Cataract Information Portal</h2>
-
-        <p id="homePara" class="home-para">
-            Please navigate using given options to learn more about cataract, surgery, and post-operative care in both English and Kannada.
-        </p>
-
-        <div class="tiles" role="list">
-
-            <div class="tile what-cataract1 fade-in" role="listitem">
-
-                <div >
-                    <h3 id="tile1">What is Cataract?</h3>
-                    <p>Basic explanation with diagrams</p>
-                </div>
-                <a class="tile-btn" href="cataract.html">Open →</a>
-            </div>
-
-            <div class="tile what-cataract1 fade-in" role="listitem">
-
-                <div>
-                    <h3 id="tile2">Before Surgery</h3>
-                    <p>Essential Pre-Operative Steps</p>
-                </div>
-                <a class="tile-btn" href="pre-surgery.html">Open →</a>
-            </div>
-
-            <div class="tile what-cataract1 fade-in" role="listitem">
-
-                <div>
-                    <h3 id="tile3">After Surgery</h3>
-                    <p>After surgery care instructions</p>
-                </div>
-                <a class="tile-btn" href="post-surgery.html">Open →</a>
-            </div>
-
-            <div class="tile what-cataract1 fade-in" role="listitem">
-
-                <div>
-                    <h3 id="tile4">FAQs</h3>
-                    <p>Common questions with answers in both languages.</p>
-                </div>
-                <a class="tile-btn" href="faq.html">Open →</a>
-            </div>
-
-            <div class="tile what-cataract1 fade-in" role="listitem">
-
-                <div>
-                    <h3 id="tile5">Contact / Help</h3>
-                    <p>Hospital contact information and assistance.</p>
-                </div>
-                <a class="tile-btn" href="contact.html">Open →</a>
-            </div>
+            <!-- WHY CHOOSE US -->
+            <section class="content-section" style="text-align: center; margin-bottom: 4rem;">
+                <h2 id="whyTitle" class="section-title">Why Choose SDM?</h2>
+                <ul class="bullet-list" id="whyList"
+                    style="text-align: left; display: inline-block; margin: 0 auto; min-width: 300px;">
+                    <li>State-of-the-art Phacoemulsification Technology</li>
+                    <li>Highly Experienced Ophthalmologists</li>
+                </ul>
+            </section>
 
         </div>
     </main>
 
     <!-- ======= FOOTER ======= -->
-    <footer class="site-footer">
-        <p>© 2025 SDM College of Medical Sciences & Hospital, Dharwad. Developed by Dept. of Computer Science, SDMCET.</p>
-    </footer>
+    <footer class="site-footer"></footer>
 
     <!-- ======= SCRIPTS ======= -->
     <!-- Language Script -->
     <script src="language.js"></script>
 
-    <!-- Hamburger Menu Script -->
-    <script src="menu.js"></script>
+    <script>
+        document.body.classList.add("fade-out");
 
-    
+        window.addEventListener("DOMContentLoaded", () => {
+            document.body.classList.remove("fade-out");
+        });
 
-<script>
-    document.body.classList.add( "fade-out" );
+        // Smooth fade when clicking internal links
+        document.querySelectorAll('a[href]').forEach(link => {
+            if (link.href.includes(window.location.origin)) {
+                link.addEventListener('click', function (e) {
+                    const href = this.getAttribute("href");
 
-    window.addEventListener( "DOMContentLoaded", () =>
-    {
-        document.body.classList.remove( "fade-out" );
-    } );
-
-    // Smooth fade when clicking internal links
-    document.querySelectorAll( 'a[href]' ).forEach( link =>
-    {
-        if ( link.href.includes( window.location.origin ) )
-        {
-            link.addEventListener( 'click', function ( e )
-            {
-                const href = this.getAttribute( "href" );
-
-                if ( !href.startsWith( "#" ) )
-                {
-                    e.preventDefault();
-                    document.body.classList.add( "fade-out" );
-                    setTimeout( () =>
-                    {
-                        window.location = href;
-                    }, 300 ); // match transition time
-                }
-            } );
-        }
-    } );
-</script>
-
-
+                    if (!href.startsWith("#")) {
+                        e.preventDefault();
+                        document.body.classList.add("fade-out");
+                        setTimeout(() => {
+                            window.location = href;
+                        }, 300); // match transition time
+                    }
+                });
+            }
+        });
+    </script>
 
 </body>
+
 </html>

@@ -11,46 +11,7 @@
 <body>
 
     <!-- ======= HEADER ======= -->
-    <header class="site-header">
-
-        <div class="header-left">
-            <img src="sdmlogo.png" alt="SDM Logo" class="site-logo">
-            <div class="site-title">
-                <h1>SDM College of Medical Sciences & Hospital</h1>
-                <h2>Ophthalmology — Cataract Information Portal</h2>
-            </div>
-        </div>
-
-        <nav class="main-nav desktop-nav">
-            <a href="index.html">Home</a>
-            <a href="cataract.html">What is Cataract?</a>
-            <a class="active" href="pre-surgery.html">Before Surgery</a>
-            <a href="post-surgery.html">After Surgery</a>
-            <a href="faq.html">FAQs</a>
-            <a href="contact.html">Contact / Help</a>
-        </nav>
-
-        <div class="mobile-nav-container">
-            <a class="mobile-home" href="index.html">Home</a>
-            <button id="hamburgerBtn" class="hamburger">☰</button>
-
-            <div id="mobileMenu" class="mobile-menu">
-                <a href="cataract.html">What is Cataract?</a>
-                <a href="pre-surgery.html">Before Surgery</a>
-                <a href="post-surgery.html">After Surgery</a>
-                <a href="faq.html">FAQs</a>
-                <a href="contact.html">Contact / Help</a>
-            </div>
-        </div>
-
-        <div class="header-right">
-            <select id="language">
-                <option value="en">English</option>
-                <option value="kn">ಕನ್ನಡ</option>
-            </select>
-        </div>
-
-    </header>
+    <header class="site-header"></header>
 
     <!-- ======= MAIN CONTENT ======= -->
     <main class="content container">
@@ -58,100 +19,100 @@
         <h2 id="pre_title" class="page-title">Before Cataract Surgery</h2>
 
         <section class="content-section">
-            <p id="pre_p1">
-                Preparing for cataract surgery is simple, but it is important to follow a few steps
-                to ensure a smooth and safe procedure. These instructions will help you get ready
-                and avoid any last-minute complications.
+            <p id="pre_intro">
+                A successful surgery starts with good preparation. Follow this timeline to ensure you are ready for your
+                procedure.
             </p>
-            <button class="audio-btn" onclick="playAudio('pre_p1')">&#128266; </button>
+            <button class="audio-btn" onclick="playAudio('pre_intro')">&#128266; </button>
         </section>
 
-        <!-- PRE-SURGERY CHECKLIST -->
-        <h2 id="pre_checklist_title" class="section-title">Pre-Surgery Checklist</h2>
-
+        <!-- 1 WEEK BEFORE -->
+        <h2 id="pre_week_title" class="section-title">1 Week Before Surgery</h2>
         <section class="content-section">
-            <ul class="bullet-list" id="pre_list">
-                <li id="pre1">General health check-up and blood tests (as advised)</li>
-                <li id="pre2">Blood sugar and blood pressure should be under control</li>
-                <li id="pre3">ECG may be advised for elderly patients</li>
-                <li id="pre4">Use any prescribed eye drops before surgery</li>
-                <li id="pre5">Do not eat or drink anything 6 hours before surgery (if instructed)</li>
-                <li id="pre6">Bring all your current medications</li>
-                <li id="pre7">A family member or attendant should accompany you</li>
+            <ul class="bullet-list" id="pre_week_list">
+                <li id="week1"><strong>Medical Review:</strong> Visit your general physician for a fitness check-up
+                    (ECG, Blood Sugar, BP).</li>
+                <li id="week2"><strong>Eye Drops:</strong> Start using antibiotic eye drops if prescribed by your
+                    ophthalmologist.</li>
+                <li id="week3"><strong>Plan Ahead:</strong> Arrange for a family member or friend to drive you home
+                    after surgery.</li>
             </ul>
+            <button class="audio-btn" onclick="playAudio('pre_week_list')">&#128266; </button>
+        </section>
 
-            <button class="audio-btn" onclick="playAudio('pre_list')">&#128266; </button>
+        <!-- DAY BEFORE -->
+        <h2 id="pre_daybefore_title" class="section-title">The Day Before Surgery</h2>
+        <section class="content-section">
+            <ul class="bullet-list" id="pre_daybefore_list">
+                <li id="daybefore1"><strong>Review Medications:</strong> Ask your doctor which medicines to take or stop
+                    (especially blood thinners).</li>
+                <li id="daybefore2"><strong>Hygiene:</strong> Wash your hair and face. You won’t be able to wash your
+                    hair for a few days after surgery.</li>
+                <li id="daybefore3"><strong>Rest:</strong> Get a good night's sleep to keep your blood pressure stable.
+                </li>
+            </ul>
+            <button class="audio-btn" onclick="playAudio('pre_daybefore_list')">&#128266; </button>
+        </section>
+
+        <!-- DAY OF SURGERY -->
+        <h2 id="pre_dayof_title" class="section-title">On the Morning of Surgery</h2>
+        <section class="content-section">
+            <ul class="bullet-list" id="pre_dayof_list">
+                <li id="dayof1"><strong>Fasting:</strong> Do not eat solid food for 6 hours before surgery. You may
+                    drink clear water/tea up to 2 hours before.</li>
+                <li id="dayof2"><strong>Medication:</strong> Take your blood pressure or thyroid medicines with a sip of
+                    water (unless told otherwise).</li>
+                <li id="dayof3"><strong>Dress Code:</strong> Wear loose, comfortable cotton clothes with buttons (avoid
+                    T-shirts that pull over the head).</li>
+                <li id="dayof4"><strong>No Makeup:</strong> Do not use cosmetics, creams, perfumes, or hair oil.</li>
+            </ul>
+            <button class="audio-btn" onclick="playAudio('pre_dayof_list')">&#128266; </button>
         </section>
 
         <!-- WHAT TO BRING -->
-        <h2 id="pre_bring_title" class="section-title">What to Bring on the Day of Surgery</h2>
-
+        <h2 id="pre_bring_title" class="section-title">Checklist: What to Bring</h2>
         <section class="content-section">
             <ul class="bullet-list" id="pre_bring_list">
-                <li id="bring1">Personal ID proof</li>
-                <li id="bring2">Doctor’s prescription and past medical records</li>
-                <li id="bring3">Your regular medicines</li>
-                <li id="bring4">A clean cloth to cover the eye after surgery</li>
+                <li id="bring1">File containing all medical reports and ID proof (Aadhaar/Voter ID).</li>
+                <li id="bring2">List of current medications.</li>
+                <li id="bring3">One attendant/family member.</li>
+                <li id="bring4">Dark sunglasses to wear on your way home.</li>
             </ul>
-
             <button class="audio-btn" onclick="playAudio('pre_bring_list')">&#128266; </button>
-        </section>
-
-        <!-- BEFORE SURGERY NOTES -->
-        <h2 id="pre_notes_title" class="section-title">Important Notes</h2>
-
-        <section class="content-section">
-            <p id="pre_note1">Avoid applying hair oil, makeup, or face creams on the day of surgery.</p>
-            <button class="audio-btn" onclick="playAudio('pre_note1')">&#128266; </button>
-
-            <p id="pre_note2">Wear loose and comfortable clothes.</p>
-            <button class="audio-btn" onclick="playAudio('pre_note2')">&#128266; </button>
-
-            <p id="pre_note3">Inform the doctor if you have fever, cough, or cold before surgery.</p>
-            <button class="audio-btn" onclick="playAudio('pre_note3')">&#128266; </button>
         </section>
 
     </main>
 
     <!-- ======= FOOTER ======= -->
-    <footer class="site-footer">
-        <p>© 2025 SDM College of Medical Sciences & Hospital, Dharwad. Developed by SDMCET.</p>
-    </footer>
+    <footer class="site-footer"></footer>
 
     <!-- ======= SCRIPTS ======= -->
-    <script src="menu.js"></script>
     <script src="language.js"></script>
 
 
     <script>
-        document.body.classList.add( "fade-out" );
+        document.body.classList.add("fade-out");
 
-        window.addEventListener( "DOMContentLoaded", () =>
-        {
-            document.body.classList.remove( "fade-out" );
-        } );
+        window.addEventListener("DOMContentLoaded", () => {
+            document.body.classList.remove("fade-out");
+        });
 
         // Smooth fade when clicking internal links
-        document.querySelectorAll( 'a[href]' ).forEach( link =>
-        {
-            if ( link.href.includes( window.location.origin ) )
-            {
-                link.addEventListener( 'click', function ( e )
-                {
-                    const href = this.getAttribute( "href" );
+        document.querySelectorAll('a[href]').forEach(link => {
+            if (link.href.includes(window.location.origin)) {
+                link.addEventListener('click', function (e) {
+                    const href = this.getAttribute("href");
 
-                    if ( !href.startsWith( "#" ) )
-                    {
+                    if (!href.startsWith("#")) {
                         e.preventDefault();
-                        document.body.classList.add( "fade-out" );
-                        setTimeout( () =>
-                        {
+                        document.body.classList.add("fade-out");
+                        setTimeout(() => {
                             window.location = href;
-                        }, 300 ); // match transition time
+                        }, 300); // match transition time
                     }
-                } );
+                });
             }
-        } );
+        });
     </script>
 
 

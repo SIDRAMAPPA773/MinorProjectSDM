@@ -20,95 +20,8 @@ body {
     color: #222;
 }
 
-/* ---------- HEADER (MATCHED WITH style.css) ---------- */
-
-.site-header {
-    background: #004aad;
-    color: white;
-    padding: 16px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-}
-
-.header-left {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
-.site-logo {
-    width: 60px;
-    height: 60px;
-    border-radius: 8px;
-    object-fit: cover;
-    background-color: white !important;
-    /* FIXED BLUE BACKGROUND */
-}
-
-/* NAVIGATION (MATCHED WITH style.css) */
-.main-nav {
-    display: flex;
-    gap: 10px;
-}
-
-.main-nav a {
-    color: white;
-    padding: 6px 10px;
-    text-decoration: none;
-    border-radius: 6px;
-    font-size: 14px;
-}
-
-.main-nav a:hover {
-    background: rgba(255, 255, 255, 0.30);
-}
-
-.active {
-    background: rgba(255, 255, 255, 0.25);
-}
-
-/* MOBILE MENU (MATCHED WITH style.css) */
-.mobile-nav-container {
-    display: none;
-}
-
-.hamburger {
-    font-size: 26px;
-    background: none;
-    border: none;
-    color: white;
-}
-
-.mobile-menu {
-    display: none;
-    flex-direction: column;
-    background: #004aad;
-    padding: 12px;
-    border-radius: 10px;
-    position: absolute;
-    right: 15px;
-    top: 70px;
-}
-
-.mobile-menu a {
-    color: white;
-    padding: 10px;
-    text-decoration: none;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.mobile-menu a:last-child {
-    border-bottom: none;
-}
-
-.header-right select {
-    padding: 8px;
-    border-radius: 6px;
-    border: none;
-    font-weight: 600;
-}
+/* ---------- HEADER (Handled by style.css) ---------- */
+/* Styles removed to prevent duplication/conflicts. Ensure style.css is loaded. */
 
 /* ---------- PAGE CONTENT ---------- */
 .container {
@@ -167,15 +80,6 @@ body {
     border-radius: 10px;
 }
 
-/* ---------- FOOTER (MATCHED WITH style.css) ---------- */
-.site-footer {
-    background: #004aad;
-    color: white;
-    text-align: center;
-    padding: 14px;
-    margin-top: 30px;
-}
-
 /* ---------- RESPONSIVE ---------- */
 @media (max-width: 800px) {
     .main-nav {
@@ -185,6 +89,7 @@ body {
     .mobile-nav-container {
         display: flex;
         gap: 10px;
+        --gap-fix: 10px;
     }
 
     .image-row img {
@@ -212,22 +117,4 @@ body {
 
 h2 {
     color: #004aad;
-}
-
-
-/* FIX: Restore college name + subtitle */
-.site-title h1,
-.site-title h2 {
-    color: white !important;
-    display: block !important;
-}
-
-.site-title h1 {
-    font-size: 20px !important;
-    font-weight: 700;
-}
-
-.site-title h2 {
-    font-size: 13px !important;
-    color: #e0edff !important;
 }

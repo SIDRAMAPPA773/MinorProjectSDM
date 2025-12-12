@@ -13,137 +13,82 @@
 <body>
 
     <!-- ======= HEADER ======= -->
-    <header class="site-header">
-
-        <div class="header-left">
-            <img src="sdmlogo.png" alt="SDM Logo" class="site-logo">
-
-            <div class="site-title">
-                <h1>SDM College of Medical Sciences & Hospital</h1>
-                <h2>Ophthalmology — Cataract Information Portal</h2>
-            </div>
-        </div>
-
-        <nav class="main-nav desktop-nav">
-            <a id="nav0" href="index.html">Home</a>
-            <a id="nav1" href="cataract.html">What is Cataract?</a>
-            <a id="nav2" href="pre-surgery.html">Before Surgery</a>
-            <a id="nav3" href="post-surgery.html">After Surgery</a>
-            <a id="nav4" href="faq.html">FAQs</a>
-            <a id="nav5" class="active" href="contact.html">Contact / Help</a>
-        </nav>
-
-        <div class="mobile-nav-container">
-            <a class="mobile-home" href="index.html">Home</a>
-            <button class="hamburger" id="hamburgerBtn">☰</button>
-
-            <div class="mobile-menu" id="mobileMenu">
-                <a href="cataract.html">What is Cataract?</a>
-                <a href="pre-surgery.html">Before Surgery</a>
-                <a href="post-surgery.html">After Surgery</a>
-                <a href="faq.html">FAQs</a>
-                <a href="contact.html">Contact / Help</a>
-            </div>
-        </div>
-
-        <div class="header-right">
-            <select id="language">
-                <option value="en" selected>English</option>
-                <option value="kn">ಕನ್ನಡ</option>
-            </select>
-        </div>
-
-    </header>
+    <header class="site-header"></header>
 
     <!-- ======= CONTENT ======= -->
-    <main class="content container">
+    <!-- ===== CONTENT ===== -->
+    <main class="container">
 
-    <h2 id="contact_title" class="contact-title">Contact Us</h2>
-    <p id="contact_desc" class="contact-desc">Tap the card below to call or email us.</p>
-    
-    <div class="contact-row">
-        <div class="icon-box">📞</div>
-        <div class="info">
-            <h3 id="contact_phone_label">Phone</h3>
-            <a href="tel:1234567890" id="contact_phone" class="contact-link">XXXXXXXXXX</a>
-        </div>
-    </div>
-    
-    <div class="contact-row">
-        <div class="icon-box">📧</div>
-        <div class="info">
-            <h3 id="contact_email_label">Email</h3>
-            <a href="cet.sdm@gmail.com" id="contact_email" class="contact-link">
-                cet.sdm@gmail.com
-            </a>
-        </div>
-    </div>
-    
-    <div class="contact-row">
-        <div class="icon-box">📍</div>
-        <div class="info">
-            <h3 id="contact_location_label">Location</h3>
-            <p id="contact_location">Dharwad – SDM College of Medical Sciences & Hospital</p>
-        </div>
-    </div>
+        <h2 id="contact_title" class="page-title">Contact Us</h2>
+        <p id="contact_desc" style="text-align:center; color: var(--text-gray); margin-bottom: 2rem;">Tap the card below
+            to call or email us.</p>
 
-        </div>
+        <section class="features-grid" style="grid-template-columns: 1fr 1fr;">
 
-        <h3 id="map_title" class="map-title">Find us on Map</h3>
+            <!-- Phone -->
+            <div class="feature-card">
+                <div class="card-icon">&#128222;</div>
+                <h3 id="phone_title" class="card-title">Phone</h3>
+                <a href="tel:1234567890" id="contact_phone" class="btn-link" style="font-size: 1.1rem;">XXXXXXXXXX</a>
+            </div>
 
-        <div class="map-box">
-            <iframe src="https://www.google.com/maps?q=SDM+Medical+College+Dharwad&output=embed" loading="lazy">
-            </iframe>
-        </div>
+            <!-- Email -->
+            <div class="feature-card">
+                <div class="card-icon">&#128231;</div>
+                <h3 id="email_title" class="card-title">Email</h3>
+                <a href="mailto:cet.sdm@gmail.com" id="contact_email" class="btn-link"
+                    style="font-size: 1.1rem;">cet.sdm@gmail.com</a>
+            </div>
+
+            <!-- Location -->
+            <div class="feature-card">
+                <div class="card-icon">&#128205;</div>
+                <h3 id="location_title" class="card-title">Location</h3>
+                <p id="location_value" class="card-desc">Dharwad – SDM College of Medical Sciences & Hospital</p>
+            </div>
+
+            <!-- Map -->
+            <div class="feature-card" style="padding: 0; overflow: hidden; height: 100%; min-height: 300px;">
+                <iframe src="https://www.google.com/maps?q=SDM+Medical+College+Dharwad&output=embed" loading="lazy"
+                    style="width: 100%; height: 100%; min-height: 300px; border: 0;"></iframe>
+            </div>
+
+        </section>
+
+
 
     </main>
 
     <!-- ======= FOOTER ======= -->
-    <footer class="site-footer">
-        <p id="footer_text">© 2025 SDM College of Medical Sciences & Hospital, Dharwad. Developed by SDMCET.</p>
-    </footer>
+    <footer class="site-footer"></footer>
 
-    <script src="menu.js"></script>
     <script src="language.js"></script>
 
 
-<script>
-    document.body.classList.add( "fade-out" );
+    <script>
+        document.body.classList.add("fade-out");
 
-    window.addEventListener( "DOMContentLoaded", () =>
-    {
-        document.body.classList.remove( "fade-out" );
-    } );
+        window.addEventListener("DOMContentLoaded", () => {
+            document.body.classList.remove("fade-out");
+        });
 
-    // Smooth fade when clicking internal links
-    document.querySelectorAll( 'a[href]' ).forEach( link =>
-    {
-        if ( link.href.includes( window.location.origin ) )
-        {
-            link.addEventListener( 'click', function ( e )
-            {
-                const href = this.getAttribute( "href" );
+        // Smooth fade when clicking internal links
+        document.querySelectorAll('a[href]').forEach(link => {
+            if (link.href.includes(window.location.origin)) {
+                link.addEventListener('click', function (e) {
+                    const href = this.getAttribute("href");
 
-                if ( !href.startsWith( "#" ) )
-                {
-                    e.preventDefault();
-                    document.body.classList.add( "fade-out" );
-                    setTimeout( () =>
-                    {
-                        window.location = href;
-                    }, 300 ); // match transition time
-                }
-            } );
-        }
-    } );
-</script>
-
-<script>
-    // Apply saved global language on contact page
-    const savedLang = localStorage.getItem( "siteLang" ) || "en";
-    document.getElementById( "language" ).value = savedLang;
-    document.dispatchEvent( new Event( "DOMContentLoaded" ) );
-</script>
+                    if (!href.startsWith("#")) {
+                        e.preventDefault();
+                        document.body.classList.add("fade-out");
+                        setTimeout(() => {
+                            window.location = href;
+                        }, 300); // match transition time
+                    }
+                });
+            }
+        });
+    </script>
 
 </body>
 
