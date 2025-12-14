@@ -74,28 +74,40 @@ const clearTimer = (id) => {
 };
 
 // Emails
-const transporter = nodemailer.createTransport({
-    host: 'smtp.gmail.com',
-    port: 465,
-    secure: true, // Use SSL
-    auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS
-    },
-    family: 4, // Force IPv4
-    connectionTimeout: 30000, // 30s
-    greetingTimeout: 30000,
-    socketTimeout: 30000,
-    debug: true,
-    logger: true
-});
+let transporter;
+
+if (process.env.EMAIL_SERVICE === 'sendgrid') {
+    transporter = nodemailer.createTransport({
+        host: 'smtp.sendgrid.net',
+        port: 587,
+        auth: {
+            user: 'apikey', // This is literally the string 'apikey'
+            pass: process.env.SENDGRID_API_KEY
+        }
+    });
+    console.log('[SMTP] Using SendGrid Service');
+} else {
+    // Default to Gmail (Best Effort)
+    transporter = nodemailer.createTransport({
+        host: 'smtp.gmail.com',
+        port: 465,
+        secure: true,
+        auth: {
+            user: process.env.EMAIL_USER,
+            pass: process.env.EMAIL_PASS
+        },
+        family: 4,
+        connectionTimeout: 30000,
+    });
+    console.log('[SMTP] Using Gmail Service');
+}
 
 // Verify SMTP Connection on Startup
 transporter.verify(function (error, success) {
     if (error) {
         console.log('[SMTP ERROR] Connection test failed:', error);
     } else {
-        console.log('[SMTP] Server is ready to take our messages');
+        console.log('[SMTP] Connection established successfully!');
     }
 });
 
