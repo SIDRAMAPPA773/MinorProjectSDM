@@ -9,7 +9,7 @@ const clearReminderBtn = document.getElementById('clearReminder');
 const reminderStatus = document.getElementById('reminderStatus');
 
 // Backend URL
-const API_URL = 'http://localhost:3000/api/reminders';
+const API_URL = '/api/reminders';
 
 // Toggle Window Logic
 if (reminderCard) {

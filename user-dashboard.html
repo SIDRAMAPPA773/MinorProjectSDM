@@ -394,7 +394,7 @@
         async function loadReminders() {
             const grid = document.getElementById('reminderGrid');
             try {
-                const res = await fetch(`http://localhost:3000/api/user/reminders?email=${userEmail}`);
+                const res = await fetch(`/api/user/reminders?email=${userEmail}`);
                 const reminders = await res.json();
 
                 grid.innerHTML = '';
@@ -436,7 +436,7 @@
             // Instant delete without blocked dialog
             console.log("Stopping reminder:", id);
             try {
-                const res = await fetch(`http://localhost:3000/api/reminders/${id}`, {
+                const res = await fetch(`/api/reminders/${id}`, {
                     method: 'DELETE'
                 });
                 console.log("Delete response:", res.status);
@@ -455,7 +455,7 @@
             const interval = document.getElementById('pInterval').value;
 
             try {
-                const res = await fetch('http://localhost:3000/api/reminders', {
+                const res = await fetch('/api/reminders', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({

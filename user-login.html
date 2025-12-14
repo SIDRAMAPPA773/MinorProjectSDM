@@ -235,7 +235,7 @@
         // 1. User Login
         document.getElementById('loginForm').addEventListener('submit', (e) => {
             e.preventDefault();
-            handleUserAuth('http://localhost:3000/api/user/login', {
+            handleUserAuth('/api/user/login', {
                 email: document.getElementById('email').value,
                 password: document.getElementById('password').value
             });
@@ -244,7 +244,7 @@
         // 2. User Register
         document.getElementById('registerForm').addEventListener('submit', (e) => {
             e.preventDefault();
-            handleUserAuth('http://localhost:3000/api/user/register', {
+            handleUserAuth('/api/user/register', {
                 name: document.getElementById('regName').value,
                 email: document.getElementById('regEmail').value,
                 phone: document.getElementById('regPhone').value,
@@ -296,7 +296,7 @@
             const newPass = document.getElementById('resetNewPass').value;
 
             try {
-                const res = await fetch('http://localhost:3000/api/user/reset-password', {
+                const res = await fetch('/api/user/reset-password', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ email, newPassword: newPass })
