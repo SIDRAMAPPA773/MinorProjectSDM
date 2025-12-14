@@ -468,6 +468,7 @@ function renderHeader(lang) {
             </div>
 
             <div class="header-right">
+                <div id="authContainer" style="display:inline-flex; align-items:center;"></div>
                 <select id="language" class="lang-select">
                     <option value="en" ${lang === 'en' ? 'selected' : ''}>English</option>
                     <option value="kn" ${lang === 'kn' ? 'selected' : ''}>ಕನ್ನಡ</option>
@@ -513,6 +514,26 @@ function renderHeader(lang) {
             renderFooter(newLang);
             updatePageContent(newLang);
         });
+    }
+
+    // Dynamic Auth Buttons
+    const authContainer = document.getElementById('authContainer');
+    if (authContainer) {
+        const userEmail = localStorage.getItem('user_email');
+        if (userEmail) {
+            authContainer.innerHTML = `
+                <a href="user-dashboard.html" style="margin-right:10px; text-decoration:none; background:#10b981; color:white; padding:8px 16px; border-radius:6px; font-weight:600; font-size:0.9rem;">Dashboard</a>
+                <button id="logoutBtn" style="margin-right:15px; border:none; background:#ef4444; color:white; padding:8px 16px; border-radius:6px; font-weight:600; font-size:0.9rem; cursor:pointer;">Logout</button>
+            `;
+            document.getElementById('logoutBtn').addEventListener('click', () => {
+                localStorage.removeItem('user_email');
+                window.location.href = 'index.html';
+            });
+        } else {
+            authContainer.innerHTML = `
+                <a href="user-login.html" style="margin-right:15px; text-decoration:none; background:#4f46e5; color:white; padding:8px 16px; border-radius:6px; font-weight:600; font-size:0.9rem;">Login</a>
+            `;
+        }
     }
 }
 

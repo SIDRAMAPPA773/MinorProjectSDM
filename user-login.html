@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unified Sign In - SDM Eye Care</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #f8fafc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .login-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        h2 {
+            color: #0f172a;
+            margin-bottom: 0.5rem;
+        }
+
+        p {
+            color: #64748b;
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+        }
+
+        /* Role Toggles */
+        .role-switch {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            background: #f1f5f9;
+            padding: 5px;
+            border-radius: 8px;
+        }
+
+        .role-btn {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            border-radius: 6px;
+            font-weight: 600;
+            color: #64748b;
+            transition: all 0.2s;
+        }
+
+        .role-btn.active {
+            background: white;
+            color: #4f46e5;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 1rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 1rem;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #4f46e5;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background 0.2s;
+        }
+
+        button:hover {
+            background: #4338ca;
+        }
+
+        button.admin-btn {
+            background: #0f172a;
+        }
+
+        button.admin-btn:hover {
+            background: #1e293b;
+        }
+
+        .error {
+            color: #dc2626;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="login-card">
+        <h2 id="mainTitle">SDM Portal</h2>
+
+        <!-- Role Switcher -->
+        <div class="role-switch">
+            <button class="role-btn active" id="userBtn" onclick="setRole('user')">User Login</button>
+            <button class="role-btn" id="adminBtn" onclick="setRole('admin')">Admin Login</button>
+        </div>
+
+        <p id="formSubtitle">Manage your personal reminders.</p>
+
+        <!-- USER SECTION ========================== -->
+        <div id="userSection">
+            <!-- Login Form -->
+            <form id="loginForm">
+                <input type="email" id="email" placeholder="Email Address" required>
+                <input type="password" id="password" placeholder="Password" required>
+                <button type="submit">User Sign In</button>
+            </form>
+
+            <!-- Register Form -->
+            <form id="registerForm" style="display:none;">
+                <input type="text" id="regName" placeholder="Full Name" required>
+                <input type="email" id="regEmail" placeholder="Gmail Address" required>
+                <input type="tel" id="regPhone" placeholder="Mobile Number" required>
+                <input type="password" id="regPassword" placeholder="Set Password" required>
+                <button type="submit" style="background:#059669;">Create Account</button>
+            </form>
+
+            <p style="margin-top: 20px; cursor: pointer; color: #4f46e5; font-weight: 500;" onclick="toggleUserForm()">
+                <span id="toggleText">New User? Sign Up</span>
+            </p>
+        </div>
+
+        <!-- ADMIN SECTION ========================= -->
+        <div id="adminSection" style="display:none;">
+            <form id="adminForm">
+                <input type="email" id="adminEmail" placeholder="Admin Email" required>
+                <input type="password" id="adminPassword" placeholder="Admin Password" required>
+                <button type="submit" class="admin-btn">Admin Dashboard Access</button>
+            </form>
+        </div>
+
+        <div id="errorMsg" class="error"></div>
+
+        <p style="margin-top: 10px; font-size: 0.8rem;">
+            <a href="index.html" style="color: #64748b; text-decoration: none;">&larr; Back to Home</a>
+        </p>
+    </div>
+
+    <script>
+        // Check Existing Sessions
+        if (localStorage.getItem('auth_token') === 'valid_admin_token') window.location.href = 'admin.html';
+        if (localStorage.getItem('user_email')) window.location.href = 'user-dashboard.html';
+
+        let currentRole = 'user';
+        let isRegister = false;
+
+        const subtitle = document.getElementById('formSubtitle');
+        const errorDiv = document.getElementById('errorMsg');
+
+        // Role Toggling
+        function setRole(role) {
+            currentRole = role;
+            errorDiv.style.display = 'none';
+
+            // Buttons
+            document.getElementById('userBtn').classList.toggle('active', role === 'user');
+            document.getElementById('adminBtn').classList.toggle('active', role === 'admin');
+
+            // Sections
+            if (role === 'user') {
+                document.getElementById('userSection').style.display = 'block';
+                document.getElementById('adminSection').style.display = 'none';
+                subtitle.textContent = "Manage your personal reminders.";
+            } else {
+                document.getElementById('userSection').style.display = 'none';
+                document.getElementById('adminSection').style.display = 'block';
+                subtitle.textContent = "Restricted access for administrators.";
+            }
+        }
+
+        // User Toggle (Login/Register)
+        function toggleUserForm() {
+            isRegister = !isRegister;
+            errorDiv.style.display = 'none';
+            const logF = document.getElementById('loginForm');
+            const regF = document.getElementById('registerForm');
+            const txt = document.getElementById('toggleText');
+
+            if (isRegister) {
+                logF.style.display = 'none';
+                regF.style.display = 'block';
+                txt.textContent = 'Already have an account? Sign In';
+            } else {
+                logF.style.display = 'block';
+                regF.style.display = 'none';
+                txt.textContent = 'New User? Sign Up';
+            }
+        }
+
+        // --- SUBMIT HANDLERS ---
+
+        // 1. User Login
+        document.getElementById('loginForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            handleUserAuth('http://localhost:3000/api/user/login', {
+                email: document.getElementById('email').value,
+                password: document.getElementById('password').value
+            });
+        });
+
+        // 2. User Register
+        document.getElementById('registerForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            handleUserAuth('http://localhost:3000/api/user/register', {
+                name: document.getElementById('regName').value,
+                email: document.getElementById('regEmail').value,
+                phone: document.getElementById('regPhone').value,
+                password: document.getElementById('regPassword').value
+            });
+        });
+
+        // 3. Admin Login (Client-Side Check as per Prototype)
+        document.getElementById('adminForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = document.getElementById('adminEmail').value;
+            const pass = document.getElementById('adminPassword').value;
+
+            // Updated Credentials
+            if (email === 'sidramhalannavar7@gmail.com' && pass === '12345678') {
+                localStorage.setItem('auth_token', 'valid_admin_token');
+                window.location.href = 'admin.html';
+            } else {
+                showError('Invalid Admin Credentials');
+            }
+        });
+
+        // Helper: User Auth API
+        async function handleUserAuth(url, body) {
+            errorDiv.style.display = 'none';
+            try {
+                const res = await fetch(url, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(body)
+                });
+                const data = await res.json();
+
+                if (res.ok) {
+                    localStorage.setItem('user_email', data.email);
+                    window.location.href = 'user-dashboard.html';
+                } else {
+                    showError(data.error || 'Authentication failed');
+                }
+            } catch (err) {
+                showError('Server error. Is the backend running?');
+            }
+        }
+
+        function showError(msg) {
+            errorDiv.textContent = msg;
+            errorDiv.style.display = 'block';
+        }
+    </script>
+
+</body>
+
+</html>

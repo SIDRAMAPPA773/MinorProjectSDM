@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login - SDM Eye Care</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .login-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        h2 {
+            color: #1e293b;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #475569;
+            font-weight: 500;
+        }
+
+        input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            font-size: 1rem;
+            box-sizing: border-box;
+            /* Fix padding issue */
+        }
+
+        button {
+            width: 100%;
+            padding: 0.75rem;
+            background: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 1rem;
+            transition: background 0.2s;
+        }
+
+        button:hover {
+            background: #1d4ed8;
+        }
+
+        .error-msg {
+            color: #dc2626;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="login-card">
+        <h2>Admin Login</h2>
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" required placeholder="admin@example.com">
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" required placeholder="••••••••">
+            </div>
+            <button type="submit">Sign In</button>
+            <p id="errorMsg" class="error-msg">Invalid credentials. Please try again.</p>
+        </form>
+    </div>
+
+    <script>
+        const ADMIN_EMAIL = 'sidramhalannavar7@gmail.com';
+        const ADMIN_PASS = '1234';
+
+        // Check if already logged in
+        if (localStorage.getItem('auth_token') === 'valid_admin_token') {
+            window.location.href = 'admin.html';
+        }
+
+        document.getElementById('loginForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const errorMsg = document.getElementById('errorMsg');
+
+            if (email === ADMIN_EMAIL && password === ADMIN_PASS) {
+                localStorage.setItem('auth_token', 'valid_admin_token');
+                window.location.href = 'admin.html';
+            } else {
+                errorMsg.style.display = 'block';
+            }
+        });
+    </script>
+
+</body>
+
+</html>

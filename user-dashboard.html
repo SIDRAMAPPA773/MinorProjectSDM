@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Dashboard - SDM Eye Care</title>
+    <!-- Modern Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4f46e5;
+            --primary-dark: #4338ca;
+            --accent: #f472b6;
+            --bg: #f8fafc;
+            --glass-bg: rgba(255, 255, 255, 0.7);
+            --glass-border: rgba(255, 255, 255, 0.5);
+            --text-main: #0f172a;
+            --text-sub: #64748b;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: linear-gradient(135deg, #e0e7ff 0%, #f3e8ff 100%);
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            color: var(--text-main);
+            overflow: hidden;
+        }
+
+        /* SIDEBAR */
+        .sidebar {
+            width: 260px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-right: 1px solid var(--glass-border);
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .brand {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 3rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .menu-item {
+            display: block;
+            padding: 12px 16px;
+            margin-bottom: 8px;
+            border-radius: 12px;
+            color: var(--text-sub);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .menu-item:hover,
+        .menu-item.active {
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
+        }
+
+        .user-profile {
+            background: white;
+            padding: 1rem;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        /* MAIN CONTENT */
+        .main-content {
+            flex: 1;
+            padding: 2rem 3rem;
+            overflow-y: auto;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .greeting h1 {
+            font-size: 2rem;
+            margin: 0;
+            font-weight: 600;
+        }
+
+        .greeting p {
+            color: var(--text-sub);
+            margin: 5px 0 0 0;
+        }
+
+        .btn-add {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(79, 70, 229, 0.4);
+            transition: transform 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-add:hover {
+            transform: translateY(-2px);
+        }
+
+        /* CARDS GRID */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 24px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid white;
+            padding: 1.5rem;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.05);
+            transition: transform 0.2s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 6px;
+            height: 100%;
+            background: var(--primary);
+        }
+
+        .card.inactive::before {
+            background: #cbd5e1;
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+
+        .card-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .card-interval {
+            font-size: 0.9rem;
+            color: var(--accent);
+            font-weight: 600;
+            background: #fce7f3;
+            padding: 4px 10px;
+            border-radius: 20px;
+        }
+
+        .card-info {
+            color: var(--text-sub);
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-delete {
+            background: #fee2e2;
+            color: #991b1b;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 1rem;
+            width: 100%;
+            transition: background 0.2s;
+        }
+
+        .btn-delete:hover {
+            background: #fecaca;
+        }
+
+        /* MODAL */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 23, 42, 0.4);
+            backdrop-filter: blur(4px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        .modal-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 24px;
+            width: 100%;
+            max-width: 420px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .input-group {
+            margin-bottom: 1.2rem;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--text-sub);
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 1rem;
+            box-sizing: border-box;
+            font-family: inherit;
+        }
+
+        .input-group input:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            body {
+                flex-direction: column;
+                overflow: visible;
+            }
+
+            .sidebar {
+                width: 100%;
+                padding: 1rem;
+                flex-direction: row;
+                align-items: center;
+                height: auto;
+                box-sizing: border-box;
+            }
+
+            .sidebar .menu-item {
+                display: none;
+            }
+
+            /* Hide menu on mobile for simplicity */
+            .sidebar .brand {
+                margin: 0;
+            }
+
+            .main-content {
+                padding: 1.5rem;
+            }
+
+            .btn-add span {
+                display: none;
+            }
+
+            /* Icon only on mobile */
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div>
+            <div class="brand">
+                <span style="font-size:24px;">👁️</span> SDM Care
+            </div>
+            <a href="index.html" class="menu-item">← Back to Website</a>
+            <a href="#" class="menu-item active">Dashboard</a>
+            <a href="#" class="menu-item">My Profile</a>
+            <a href="#" class="menu-item">Settings</a>
+        </div>
+
+        <div class="user-profile">
+            <div
+                style="width:36px; height:36px; background:#e0e7ff; border-radius:50%; display:flex; align-items:center; justify-content:center; color:var(--primary); font-weight:bold;">
+                U</div>
+            <div style="overflow:hidden;">
+                <div id="sidebarEmail"
+                    style="font-size:0.85rem; font-weight:600; white-space:nowrap; text-overflow:ellipsis;">User</div>
+                <div style="font-size:0.75rem; color:var(--text-sub); cursor:pointer;" onclick="logout()">Sign Out</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="header">
+            <div class="greeting">
+                <h1>Hello, Patient!</h1>
+                <p>Here are your active medication reminders.</p>
+            </div>
+            <button class="btn-add" onclick="openModal()">
+                <span style="font-size:1.2rem;">+</span> <span>New Reminder</span>
+            </button>
+        </div>
+
+        <div class="grid" id="reminderGrid">
+            <div style="grid-column:1/-1; text-align:center; padding:3rem; color:var(--text-sub);">
+                Loading your reminders...
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Modal -->
+    <div class="modal-overlay" id="addModal">
+        <div class="modal-card">
+            <h2 style="margin-top:0; color:var(--text-main);">Set Reminder</h2>
+            <form id="addForm">
+                <div class="input-group">
+                    <label>Patient Name</label>
+                    <input type="text" id="pName" placeholder="e.g. John Doe" required>
+                </div>
+                <div class="input-group">
+                    <label>Mobile Number</label>
+                    <!-- Validated Pre-fill -->
+                    <input type="tel" id="pPhone" value="+917349135980" placeholder="e.g. +917349135980" required>
+                </div>
+                <div class="input-group">
+                    <label>Interval (Hours)</label>
+                    <input type="number" id="pInterval" step="any" placeholder="e.g. 4" required>
+                </div>
+                <div class="input-group">
+                    <label>Start Time (Optional)</label>
+                    <input type="datetime-local" id="pStartTime">
+                </div>
+
+                <div style="display:flex; gap:10px; margin-top:2rem;">
+                    <button type="button" onclick="closeModal()"
+                        style="flex:1; padding:12px; background:#f1f5f9; color:var(--text-sub); border:none; border-radius:10px; font-weight:600; cursor:pointer;">Cancel</button>
+                    <button type="submit"
+                        style="flex:2; padding:12px; background:var(--primary); color:white; border:none; border-radius:10px; font-weight:600; cursor:pointer;">Save
+                        Reminder</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const userEmail = localStorage.getItem('user_email');
+        if (!userEmail) window.location.href = 'user-login.html';
+
+        document.getElementById('sidebarEmail').textContent = userEmail;
+
+        function logout() {
+            localStorage.removeItem('user_email');
+            window.location.href = 'index.html';
+        }
+
+        function openModal() { document.getElementById('addModal').style.display = 'flex'; }
+        function closeModal() { document.getElementById('addModal').style.display = 'none'; }
+
+        // Load Reminders
+        async function loadReminders() {
+            const grid = document.getElementById('reminderGrid');
+            try {
+                const res = await fetch(`http://localhost:3000/api/user/reminders?email=${userEmail}`);
+                const reminders = await res.json();
+
+                grid.innerHTML = '';
+
+                if (reminders.length === 0) {
+                    grid.innerHTML = `
+                        <div style="grid-column:1/-1; text-align:center; padding:4rem; background:rgba(255,255,255,0.5); border-radius:20px; border:2px dashed #cbd5e1;">
+                            <h3 style="color:var(--text-sub);">No reminders yet</h3>
+                            <p style="color:#94a3b8;">Click "New Reminder" to get started.</p>
+                        </div>`;
+                    return;
+                }
+
+                reminders.forEach(rem => {
+                    const card = document.createElement('div');
+                    card.className = `card ${rem.isActive ? '' : 'inactive'}`;
+                    card.innerHTML = `
+                        <div class="card-header">
+                            <div class="card-title">${rem.patientName}</div>
+                            <div class="card-interval">${rem.intervalHours}h</div>
+                        </div>
+                        <div class="card-info">📞 ${rem.phone || 'No Phone'}</div>
+                        <div class="card-info">🕒 Status: <span style="color:${rem.isActive ? '#16a34a' : '#94a3b8'}; font-weight:600;">${rem.isActive ? 'Active' : 'Stopped'}</span></div>
+                        
+                        ${rem.isActive ?
+                            `<button onclick="stopReminder('${rem._id}')" class="btn-delete">Stop Reminder</button>`
+                            : ''}
+                    `;
+                    grid.appendChild(card);
+                });
+
+            } catch (error) {
+                grid.innerHTML = '<div style="color:red; text-align:center;">Failed to load reminders. Server offline?</div>';
+            }
+        }
+
+        // Stop
+        async function stopReminder(id) {
+            // Instant delete without blocked dialog
+            console.log("Stopping reminder:", id);
+            try {
+                const res = await fetch(`http://localhost:3000/api/reminders/${id}`, {
+                    method: 'DELETE'
+                });
+                console.log("Delete response:", res.status);
+                loadReminders();
+            } catch (e) {
+                console.error("Stop failed:", e);
+                alert("Failed to stop reminder. Check connection.");
+            }
+        }
+
+        // Add
+        document.getElementById('addForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const name = document.getElementById('pName').value;
+            const phone = document.getElementById('pPhone').value;
+            const interval = document.getElementById('pInterval').value;
+
+            try {
+                const res = await fetch('http://localhost:3000/api/reminders', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        patientName: name,
+                        email: userEmail,
+                        phone: phone,
+                        intervalHours: interval,
+                        startTime: document.getElementById('pStartTime').value // Capture new field
+                    })
+                });
+
+                if (res.ok) {
+                    closeModal();
+                    loadReminders();
+                    document.getElementById('addForm').reset();
+                    // Keep the number for convenience
+                    document.getElementById('pPhone').value = "7349135980";
+                } else {
+                    alert('Error creating reminder');
+                }
+            } catch (err) {
+                alert('Server Error');
+            }
+        });
+
+        // Initial Load
+        loadReminders();
+
+    </script>
+</body>
+
+</html>

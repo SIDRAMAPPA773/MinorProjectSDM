@@ -6,6 +6,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SDM College of Medical Sciences & Hospital – Cataract Information Portal</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* Force Modal Styles in case CSS fails to load */
+        .reminder-window {
+            position: fixed;
+            bottom: 50%;
+            left: 50%;
+            transform: translate(-50%, 50%) scale(0.9);
+            width: 320px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            z-index: 2001;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s ease;
+        }
+
+        .reminder-window.active {
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 1;
+            pointer-events: all;
+            top: 50%;
+            bottom: auto;
+        }
+    </style>
 </head>
 
 <body>
@@ -72,7 +100,15 @@
                     <span class="btn-link">Read More &rarr;</span>
                 </a>
 
-                <!-- TILE 6: AI Chat -->
+                <!-- TILE 6: Reminder Card (NEW) -->
+                <div id="reminderCard" class="feature-card" style="cursor: pointer;">
+                    <div class="card-icon" style="color: #00bfa5;">&#128336;</div>
+                    <h3 class="card-title">Eye Drop Reminder</h3>
+                    <p class="card-desc">Set custom alerts to remember your medication on time.</p>
+                    <span class="btn-link">Set Reminder &rarr;</span>
+                </div>
+
+                <!-- TILE 7: AI Chat -->
                 <a href="#chat" class="feature-card" onclick="return false;">
                     <!-- Prevent default jump, handled by script -->
                     <div class="card-icon">&#129302;</div>
@@ -94,15 +130,87 @@
                 </ul>
             </section>
 
+            <!-- (Static Reminder Section Removed) -->
+
         </div>
     </main>
 
     <!-- ======= FOOTER ======= -->
     <footer class="site-footer"></footer>
 
+    <!-- ======= FLOATING WIDGETS ======= -->
+
+    <!-- Reminder Window (Modal) -->
+    <div id="reminderWindow" class="reminder-window">
+        <div class="reminder-header">
+            <h3>Eye Drop Settings</h3>
+            <span id="closeReminder" class="close-widget">&times;</span>
+        </div>
+        <div class="reminder-body">
+            <p class="widget-desc">Set schedule for <strong>this device</strong>. Alerts will appear in your browser.
+            </p>
+            <form id="reminderForm" class="widget-form">
+                <div class="form-group">
+                    <label for="pName">Patient Name</label>
+                    <input type="text" id="pName" placeholder="Your Name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="pEmail">Email (Gmail)</label>
+                    <input type="email" id="pEmail" placeholder="user@gmail.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="pPhone">Mobile Number</label>
+                    <input type="tel" id="pPhone" placeholder="+91 9876543210" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="pTime">Interval (Hours)</label>
+                    <input type="number" id="pTime" step="any" placeholder="e.g. 0.1 for 6 mins" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="pStartTime">Start Time (Optional)</label>
+                    <input type="datetime-local" id="pStartTime">
+                    <small style="color:#666; font-size:0.8rem;">Leave empty to start immediately.</small>
+                </div>
+
+                <div id="activeReminderBox"
+                    style="display:none; background: #f0fdf4; padding: 10px; border-radius: 8px; border: 1px solid #bbf7d0; margin-bottom: 10px;">
+                    <p style="font-size: 0.85rem; color: #166534; margin: 0;">&#10004; Active: <span
+                            id="activeTime"></span></p>
+                    <button type="button" id="clearReminder"
+                        style="background:none; border:none; text-decoration:underline; color:#991b1b; font-size:0.8rem; cursor:pointer; margin-top:5px;">Stop
+                        Reminder</button>
+                </div>
+
+                <button type="submit" class="btn-primary" style="width: 100%;">Enable Device Alerts</button>
+
+                <!-- Test Button -->
+                <button type="button" onclick="testNotification()"
+                    style="width: 100%; margin-top: 10px; background: #e0f2fe; color: #0284c7; border: 1px solid #7dd3fc; border-radius: 30px; padding: 10px; font-weight: 600; cursor: pointer;">
+                    &#128276; Test Notification Now
+                </button>
+
+                <!-- View List Button -->
+                <a href="admin.html" target="_blank"
+                    style="display: block; text-align: center; margin-top: 15px; padding: 12px; background: #4f46e5; color: white; border-radius: 30px; text-decoration: none; font-weight: 600; box-shadow: 0 4px 6px -1px rgba(79, 70, 229, 0.2);">
+                    &#128196; View Scheduled Reminders List
+                </a>
+            </form>
+            <div id="reminderStatus" class="status-msg" style="display: none;"></div>
+        </div>
+    </div>
+
+    </div>
+
+
+
     <!-- ======= SCRIPTS ======= -->
     <!-- Language Script -->
     <script src="language.js"></script>
+    <script src="reminders.js"></script>
     <script src="ai-chat.js"></script>
 
     <script>
@@ -128,6 +236,14 @@
                 });
             }
         });
+        function checkAuth() {
+            const userEmail = localStorage.getItem('user_email');
+            if (userEmail) {
+                window.location.href = 'user-dashboard.html';
+            } else {
+                window.location.href = 'user-login.html';
+            }
+        }
     </script>
 
 </body>
