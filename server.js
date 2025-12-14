@@ -61,12 +61,15 @@ const Reminder = mongoose.model('Reminder', ReminderSchema);
 let activeTimers = {};
 
 const clearTimer = (id) => {
-    if (activeTimers[id]) {
-        if (activeTimers[id].type === 'TIMEOUT') clearTimeout(activeTimers[id].handle);
-        else clearInterval(activeTimers[id].handle);
-        delete activeTimers[id];
+    const key = String(id);
+    if (activeTimers[key]) {
+        if (activeTimers[key].type === 'TIMEOUT') clearTimeout(activeTimers[key].handle);
+        else clearInterval(activeTimers[key].handle);
+        delete activeTimers[key];
+        console.log(`   [TIMER] Cleared active timer for ID: ${key}`);
         return true;
     }
+    console.log(`   [TIMER] No active timer found for ID: ${key}`);
     return false;
 };
 
@@ -99,6 +102,10 @@ const sendNotification = async (reminderDoc) => {
             console.log(`   > [EMAIL SENT] To: ${email}`);
         } catch (err) {
             console.error(`   > [EMAIL ERROR] ${err.message}`);
+            // THROW error to let the frontend know registration failed if this is the initial welcome email
+            // But only if it's a critical failure? 
+            // For now, let's throw it so the "New Reminder" modal shows "Error: Invalid Login"
+            throw new Error(`Email failed: ${err.message}`);
         }
     }
 
@@ -124,13 +131,13 @@ const sendNotification = async (reminderDoc) => {
                     msgOptions.from = twilioPhoneNumber;
                 } else {
                     console.error('   > [SMS ERROR] No MessagingServiceSid or From Number configured.');
-                    return;
                 }
 
                 await smsClient.messages.create(msgOptions);
                 console.log(`   > [SMS SENT] To: ${formattedPhone}`);
             } catch (err) {
                 console.error(`   > [SMS ERROR] ${err.message}`);
+                // Don't throw for SMS, as email is primary for this user
             }
         } else {
             console.log(`   > [SMS SKIP] Twilio not configured.`);
@@ -164,14 +171,15 @@ const startReminderSchedule = (reminderDoc) => {
 
         // 2. Start Interval
         const loopId = setInterval(() => {
-            if (activeTimers[reminderDoc._id]) {
+            const key = String(reminderDoc._id);
+            if (activeTimers[key]) {
                 sendNotification(reminderDoc);
             } else {
                 clearInterval(loopId);
             }
         }, intervalMs);
 
-        activeTimers[reminderDoc._id] = { type: 'INTERVAL', handle: loopId };
+        activeTimers[String(reminderDoc._id)] = { type: 'INTERVAL', handle: loopId };
     };
 
     if (delay > 0) {
@@ -179,7 +187,7 @@ const startReminderSchedule = (reminderDoc) => {
         const timeoutId = setTimeout(() => {
             startLoop();
         }, delay);
-        activeTimers[reminderDoc._id] = { type: 'TIMEOUT', handle: timeoutId };
+        activeTimers[String(reminderDoc._id)] = { type: 'TIMEOUT', handle: timeoutId };
     } else {
         // Start immediately
         startLoop();
@@ -215,7 +223,7 @@ app.post('/api/reminders', async (req, res) => {
         console.log(`   - Interval: Every ${intervalHours} hours`);
 
         // Send Welcome Notification
-        sendNotification(newReminder);
+        await sendNotification(newReminder);
 
         // Start Timer
         startReminderSchedule(newReminder);
@@ -445,6 +453,21 @@ const restoreReminders = async () => {
     }
 }
 
+
+// Debug Email Route
+app.get('/api/debug/test-email', async (req, res) => {
+    try {
+        await transporter.sendMail({
+            from: '"SDM Debug" <sidramhalannavar7@gmail.com>',
+            to: 'sidramhalannavar7@gmail.com',
+            subject: 'Deployment Test',
+            text: 'If you received this, your email configuration is correct on the live server.'
+        });
+        res.json({ message: 'Email sent successfully!' });
+    } catch (err) {
+        res.status(500).json({ error: err.message, stack: err.stack });
+    }
+});
 
 app.listen(PORT, () => {
     console.log(`================================================== `);

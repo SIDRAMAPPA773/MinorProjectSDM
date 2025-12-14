@@ -439,6 +439,7 @@
                 const res = await fetch(`/api/reminders/${id}`, {
                     method: 'DELETE'
                 });
+                if (!res.ok) throw new Error(`Server status: ${res.status}`);
                 console.log("Delete response:", res.status);
                 loadReminders();
             } catch (e) {

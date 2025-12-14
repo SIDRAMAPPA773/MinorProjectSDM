@@ -117,6 +117,23 @@
                 <!-- Data here -->
             </tbody>
         </table>
+
+        <!-- Users Section -->
+        <h2 style="margin-top: 40px;">Registered Users</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>User Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Status</th>
+                    <th>Joined</th>
+                </tr>
+            </thead>
+            <tbody id="usersTable">
+                <!-- User Data -->
+            </tbody>
+        </table>
     </div>
 
     <script>
@@ -133,21 +150,49 @@
 
         const API_URL = '/api/admin/reminders';
 
+
+
+        async function toggle(id, isActive) {
+            const res = await fetch(API_URL + '/' + id + '/toggle', {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ isActive })
+            });
+            if (!res.ok) alert('Failed to update status');
+            fetchAllData();
+        }
+
+        async function remove(id) {
+            if (!confirm('Are you sure you want to delete this reminder permanently?')) return;
+            const res = await fetch(API_URL + '/' + id, { method: 'DELETE' });
+            if (!res.ok) alert('Failed to delete');
+            fetchAllData();
+        }
+
+        // Initial Load
+        let globalReminders = [];
+
+        async function fetchAllData() {
+            await fetchReminders();
+            await fetchUsers();
+        }
+        fetchAllData();
+
         async function fetchReminders() {
             const tbody = document.getElementById('reminderTable');
             tbody.innerHTML = '<tr><td colspan="5">Loading...</td></tr>';
 
             try {
                 const res = await fetch(API_URL);
-                const reminders = await res.json();
+                globalReminders = await res.json(); // Store for User Status check
 
                 tbody.innerHTML = '';
-                if (reminders.length === 0) {
+                if (globalReminders.length === 0) {
                     tbody.innerHTML = '<tr><td colspan="5">No active reminders found.</td></tr>';
                     return;
                 }
 
-                reminders.forEach(rem => {
+                globalReminders.forEach(rem => {
                     const tr = document.createElement('tr');
                     tr.innerHTML = `
                     <td>${rem.patientName}</td>
@@ -172,24 +217,42 @@
                 tbody.innerHTML = `<tr><td colspan="5" style="color:red">Error loading data: ${err.message}. Is server running?</td></tr>`;
             }
         }
+        fetchUsers();
 
-        async function toggle(id, isActive) {
-            await fetch(API_URL + '/' + id + '/toggle', {
-                method: 'PUT',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ isActive })
-            });
-            fetchReminders();
+        async function fetchUsers() {
+            const tbody = document.getElementById('usersTable');
+            tbody.innerHTML = '<tr><td colspan="4">Loading...</td></tr>';
+            try {
+                const res = await fetch('/api/admin/users');
+                const users = await res.json();
+
+                tbody.innerHTML = '';
+                if (users.length === 0) {
+                    tbody.innerHTML = '<tr><td colspan="4">No registered users found.</td></tr>';
+                    return;
+                }
+
+                users.forEach(u => {
+                    // Check if this user has any active reminder
+                    const hasActive = globalReminders.some(r => r.email === u.email && r.isActive);
+                    const statusHtml = hasActive
+                        ? '<span class="status-active">Active</span>'
+                        : '<span style="color:#94a3b8">No Reminder</span>';
+
+                    const tr = document.createElement('tr');
+                    tr.innerHTML = `
+                        <td>${u.name}</td>
+                        <td>${u.email}</td>
+                        <td>${u.phone}</td>
+                        <td>${statusHtml}</td>
+                        <td>${new Date(u.createdAt).toLocaleDateString()}</td>
+                    `;
+                    tbody.appendChild(tr);
+                });
+            } catch (error) {
+                tbody.innerHTML = '<tr><td colspan="5" style="color:red">Error loading users.</td></tr>';
+            }
         }
-
-        async function remove(id) {
-            if (!confirm('Are you sure you want to delete this reminder permanently?')) return;
-            await fetch(API_URL + '/' + id, { method: 'DELETE' });
-            fetchReminders();
-        }
-
-        // Initial Load
-        fetchReminders();
     </script>
 
 </body>

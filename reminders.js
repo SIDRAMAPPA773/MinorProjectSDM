@@ -145,7 +145,9 @@ function showActiveState(name, interval) {
 
 // Clear Reminder
 if (clearReminderBtn) {
-    clearReminderBtn.addEventListener('click', () => {
+    clearReminderBtn.addEventListener('click', async () => {
+        const storedName = localStorage.getItem('patientName');
+
         localStorage.removeItem('patientName');
         localStorage.removeItem('reminderInterval');
         if (reminderId) clearInterval(reminderId);
@@ -155,11 +157,18 @@ if (clearReminderBtn) {
         showStatus('Reminder stopped.', 'error');
 
         // Notify backend of stop
-        fetch(API_URL + '/stop', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ patientName: localStorage.getItem('patientName') || "Unknown" })
-        }).catch(() => { });
+        if (storedName) {
+            try {
+                const res = await fetch(API_URL + '/stop', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ patientName: storedName })
+                });
+                console.log("Backend stop response:", res.status);
+            } catch (e) {
+                console.error("Failed to stop backend reminder:", e);
+            }
+        }
     });
 }
 
